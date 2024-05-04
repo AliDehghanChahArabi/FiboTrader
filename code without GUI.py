@@ -15,7 +15,7 @@ def get_stock_data(symbol, api_key):
 api_key = 'YOUR_API_KEY'
 symbol = 'DAX'
 
-# received data‌ها
+# received data‌
 data = get_stock_data(symbol, api_key)
 
 # Convert data to DataFrame
@@ -24,7 +24,7 @@ df.index = pd.to_datetime(df.index)
 df.sort_index(inplace=True)
 df['4. close'] = df['4. close'].astype(float)
 
-# Calculation of Fibonacci levelsاچی
+# Calculation of Fibonacci levels
 high = df['4. close'].max()
 low = df['4. close'].min()
 fib_levels = [0, 0.236, 0.382, 0.5, 0.618, 1]
@@ -34,7 +34,7 @@ fib_prices = [low + level * (high - low) for level in fib_levels]
 buy_dates = df[df['4. close'] > high * 0.618].index
 sell_dates = df[df['4. close'] < low * 0.382].index
 
-# Chartsار
+# Charts
 plt.figure(figsize=(10, 6))
 plt.plot(df.index, df['4. close'], label='DAX')
 
